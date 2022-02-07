@@ -107,6 +107,7 @@ import com.owncloud.android.ui.helpers.UriUploader;
 import com.owncloud.android.ui.preview.PreviewImageActivity;
 import com.owncloud.android.ui.preview.PreviewImageFragment;
 import com.owncloud.android.ui.preview.PreviewMediaFragment;
+import com.owncloud.android.ui.preview.PreviewPdfFragment;
 import com.owncloud.android.ui.preview.PreviewTextFileFragment;
 import com.owncloud.android.ui.preview.PreviewTextFragment;
 import com.owncloud.android.ui.preview.PreviewTextStringFragment;
@@ -2256,6 +2257,12 @@ public class FileDisplayActivity extends FileActivity
         final User user = getUser().orElseThrow(RuntimeException::new);
         ContactsPreferenceActivity.startActivityWithContactsFile(this, user, file);
     }
+
+    public void startPdfPreview(OCFile file) {
+        final Fragment pdfFragment = PreviewPdfFragment.newInstance(file);
+        setLeftFragment(pdfFragment);
+    }
+
 
     /**
      * Requests the download of the received {@link OCFile} , updates the UI to monitor the download progress and
